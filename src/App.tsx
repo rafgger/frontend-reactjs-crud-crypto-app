@@ -62,7 +62,7 @@ function AppContent() {
             onClick={() => setOpenNoteModal(true)}
             className="text-lg font-medium text-ct-blue-600 mt-5 cursor-pointer"
           >
-            Add new note
+            Add new currency
           </h4>
         </div>
         {/* Note Items */}
