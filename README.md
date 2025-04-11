@@ -4,6 +4,8 @@
 
 yarn dev
 
+(the backend needs to be runningw)
+
 In this comprehensive guide, you'll learn how to build a CRUD application with React.js, Tailwind CSS, React Query, React-Hook-Form, and Axios. In brief, we'll use CRUD (CREATE, READ, UPDATE, DELETE) methods to perform basic operations against a data layer via REST API.
 
 ![Build a React.js CRUD App using a RESTful API](https://codevoweb.com/wp-content/uploads/2022/11/Build-a-React.js-CRUD-App-using-a-RESTful-API.webp)
