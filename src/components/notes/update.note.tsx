@@ -16,7 +16,7 @@ type IUpdateNoteProps = {
 
 const updateNoteSchema = object({
   title: string().min(1, "Title is required"),
-  content: string().min(1, "Content is required"),
+  // content: string().min(1, "Content is required"),
 });
 
 export type UpdateNoteInput = TypeOf<typeof updateNoteSchema>;
@@ -100,10 +100,10 @@ const UpdateNote: FC<IUpdateNoteProps> = ({ note, setOpenNoteModal }) => {
             {errors["title"]?.message as string}
           </p>
         </div>
-        <div className="mb-2">
-          <label className="block text-gray-700 text-lg mb-2" htmlFor="title">
+        {/* <div className="mb-2">
+          {/* <label className="block text-gray-700 text-lg mb-2" htmlFor="title">
             Content
-          </label>
+          </label> 
           <textarea
             className={twMerge(
               `appearance-none border rounded w-full py-3 px-3 text-gray-700 mb-2 leading-tight focus:outline-none`,
@@ -120,7 +120,7 @@ const UpdateNote: FC<IUpdateNoteProps> = ({ note, setOpenNoteModal }) => {
           >
             {errors.content && errors.content.message}
           </p>
-        </div>
+        </div> */}
         <LoadingButton loading={false}>Update Note</LoadingButton>
       </form>
     </section>
