@@ -39,7 +39,7 @@ const CreateNote: FC<ICreateNoteProps> = ({ setOpenNoteModal }) => {
       NProgress.start();
     },
     onSuccess(data) {
-      queryClient.invalidateQueries(["getNotes"]);
+      queryClient.invalidateQueries({ queryKey: ["getNotes"] });
       setOpenNoteModal(false);
       NProgress.done();
       toast("Note created successfully", {

@@ -12,6 +12,7 @@ import NoteModal from "./components/note.modal";
 import CreateNote from "./components/notes/create.note";
 import NoteItem from "./components/notes/note.component";
 import NProgress from "nprogress";
+import type { INote, INotesResponse } from "./api/types";
 
 function AppContent() {
   const [openNoteModal, setOpenNoteModal] = useState(false);
@@ -20,27 +21,53 @@ function AppContent() {
     data: notes,
     isLoading,
     isFetching,
-  } = useQuery({
+    error,
+  } = useQuery<INotesResponse, Error, INote[]>({
     queryKey: ["getNotes"],
     queryFn: () => getNotesFn(),
     staleTime: 5 * 1000,
     select: (data) => data.notes,
-    onSuccess() {
+    // onSuccess: (data: INote[]) => {
+    //   NProgress.done();
+    // },
+    // onError(error: any) {
+    //   const resMessage =
+    //     error.response.data.message ||
+    //     error.response.data.detail ||
+    //     error.message ||
+    //     error.toString();
+    //   toast(resMessage, {
+    //     type: "error",
+    //     position: "top-right",
+    //   });
+    //   NProgress.done();
+    // },
+  });
+
+  // Separate success handler
+  useEffect(() => {
+    if (!isLoading && !isFetching && notes) {
       NProgress.done();
-    },
-    onError(error: any) {
+    }
+  }, [isLoading, isFetching, notes]);
+
+  // Separate error handler
+  useEffect(() => {
+    if (error) {
       const resMessage =
-        error.response.data.message ||
-        error.response.data.detail ||
+        (error as any).response?.data?.message ||
+        (error as any).response?.data?.detail ||
         error.message ||
         error.toString();
+
       toast(resMessage, {
         type: "error",
         position: "top-right",
       });
+
       NProgress.done();
-    },
-  });
+    }
+  }, [error]);
 
   useEffect(() => {
     if (isLoading || isFetching) {

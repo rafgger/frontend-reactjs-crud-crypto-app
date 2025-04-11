@@ -41,7 +41,7 @@ const NoteItem: FC<NoteItemProps> = ({ note }) => {
       NProgress.start();
     },
     onSuccess(data) {
-      queryClient.invalidateQueries(["getNotes"]);
+      queryClient.invalidateQueries({ queryKey: ["getNotes"] });
       toast("Note deleted successfully", {
         type: "warning",
         position: "top-right",

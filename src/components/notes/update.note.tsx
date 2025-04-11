@@ -44,7 +44,7 @@ const UpdateNote: FC<IUpdateNoteProps> = ({ note, setOpenNoteModal }) => {
     mutationFn: ({ noteId, note }: { noteId: string; note: UpdateNoteInput }) =>
       updateNoteFn(noteId, note),
     onSuccess(data) {
-      queryClient.invalidateQueries(["getNotes"]);
+      queryClient.invalidateQueries({ queryKey: ["getNotes"] });
       setOpenNoteModal(false);
       toast("Note updated successfully", {
         type: "success",
