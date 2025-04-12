@@ -25,23 +25,9 @@ function AppContent() {
   } = useQuery<INotesResponse, Error, INote[]>({
     queryKey: ["getNotes"],
     queryFn: () => getNotesFn(),
-    staleTime: 5 * 1000,
+    staleTime: 1 * 60 * 1000,
+    refetchInterval: 1 * 60 * 1000, // 🔁 auto-refresh every 10min
     select: (data) => data.notes,
-    // onSuccess: (data: INote[]) => {
-    //   NProgress.done();
-    // },
-    // onError(error: any) {
-    //   const resMessage =
-    //     error.response.data.message ||
-    //     error.response.data.detail ||
-    //     error.message ||
-    //     error.toString();
-    //   toast(resMessage, {
-    //     type: "error",
-    //     position: "top-right",
-    //   });
-    //   NProgress.done();
-    // },
   });
 
   // Separate success handler
