@@ -2,7 +2,7 @@
 
 docker-compose up -d
 
-(the backend needs to be running)
+(the backend needs to be running | open this frontend from a different VS Code than the backend)
 
 open on: http://localhost:3000/
 
