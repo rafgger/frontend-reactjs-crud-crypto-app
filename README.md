@@ -4,7 +4,7 @@ docker-compose up -d
 
 (the backend needs to be running | open this frontend in a different VS Code than the backend, this is not a GitHub Page)
 
-open on: http://localhost:3000/
+open via Docker on: http://localhost:3000/
 
 
 use together with [my backend](https://github.com/rafgger/fastapi_sqlalchemy) 
